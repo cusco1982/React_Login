@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-
+const passport = require('./passport')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const PORT=process.env.PORT || 8080;
@@ -20,6 +20,8 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use(passport.initialize());
+// app.use(passport.session());
 
 mongoose.connect("mongodb://localhost/authentication", {useNewUrlParser:true});
 
