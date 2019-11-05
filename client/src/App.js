@@ -5,6 +5,7 @@ import Profile from './components/Profile';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Home from './components/Home';
 
 
 
@@ -21,6 +22,10 @@ export default class App extends Component {
 
 
         <Route path="/" component={Header} />
+        <Route path="/" component={Header} />
+        <Route path="/" component={Header} />
+        <Route path="/" component={Header} />
+
 
         <div>
           <h2>I am the App Component</h2>
