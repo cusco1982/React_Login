@@ -2,7 +2,9 @@ const Strategy = require('passport-local').Strategy;
 const User = require('../models/user');
 
 const SignupStrategy = new Strategy({ passReqToCallback: true }, function (req, username, password, done) {
-    User.findOne({ profileId: profile.id }).lean().exec((err, user) => {
+    const email = req.body.email;
+
+    User.findOne({ email }).lean().exec((err, user) => {
         if (err) {
             return cb(err, null);
         }
