@@ -16,7 +16,7 @@ router.post('/signup', (req, res, next) => {
     }
 
     return res.json({
-      message: 'User authenticated'
+      message: 'User authenticated',
     })
   })(req, res, next);
 })
