@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
+import NotFound from './components/NotFound';
 
 
 
@@ -20,12 +21,16 @@ export default class App extends Component {
     return (
       <Router>
 
+        <Switch>
 
-        <Route path="/" component={Home} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/login" component={Login} />
+          <Route exact path="/" component={Home} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
+          <Route path="/*" component={NotFound} />
+
+        </Switch>
 
 
       </Router>
