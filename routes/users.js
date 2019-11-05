@@ -10,9 +10,11 @@ const passport = require('../passport');
 
 
 /* GET users listing. */
-router.post('/signuo', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.post('/signup', passport.authenticate('local-signup', {
+  successRedirect: '/',
+  failureRedirect: '/home',
+  session: false
+}));
 
 
 router.post('/signin', function(req, res, next) {
