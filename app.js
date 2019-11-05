@@ -1,6 +1,8 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const mongoose = require('mongoose');
+
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -18,6 +20,8 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+mongoose.connect("mongodb://localhost/authentication", {useNewUrlParser:true});
 
 
 app.listen(PORT, () => {
