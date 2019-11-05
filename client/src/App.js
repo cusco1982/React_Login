@@ -21,15 +21,11 @@ export default class App extends Component {
       <Router>
 
 
-        <Route path="/" component={Header} />
-        <Route path="/" component={Header} />
-        <Route path="/" component={Header} />
-        <Route path="/" component={Header} />
-
-
-        <div>
-          <h2>I am the App Component</h2>
-        </div>
+        <Route path="/" component={Home} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
 
 
       </Router>
