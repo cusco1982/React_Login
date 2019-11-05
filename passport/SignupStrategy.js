@@ -1,5 +1,9 @@
 const Strategy = require('passport-local').Strategy;
 const User = require('../models/user');
+const bcrypt = require('bcryptjs');
+
+var salt = bcrypt.genSaltSync(10);
+var hash = bcrypt.hashSync("B4c0/\/", salt);
 
 const SignupStrategy = new Strategy({ passReqToCallback: true }, function (req, username, password, done) {
     const email = req.body.email;
@@ -9,25 +13,21 @@ const SignupStrategy = new Strategy({ passReqToCallback: true }, function (req, 
             return cb(err, null);
         }
         if (user) {
-            return cb(null, user);
+            return cb('User already exists', null);
         }
 
+        const encryptedPassword = bcrypt.hashSync(password, salt);
         let newUser = new User({
-            profileId: profile.id,
-            email: profile.emails && profile.emails.length > 0 ? profile.emails[0].value : null,
-            username: profile.username,
-            profileImage: (profile.photos.length > 0) ? profile.photos[0].value : null,
-            accessToken: token,
-            refreshToken: tokenSecret,
-            provider: profile.provider || 'gitub'
+            email,
+            password: encryptedPassword
         });
 
         newUser.save((error, inserted) => {
             if (error) {
-                return cb(error, null);
+                return done(error, null);
             }
 
-            return cb(null, inserted);
+            return done(null, inserted);
         });
 
     });
