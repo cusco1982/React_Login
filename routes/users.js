@@ -4,17 +4,21 @@ const passport = require('../passport');
 
 
 // Custom Passport Callback
-router.post('/signup', (req,res) => {
+router.post('/signup', (req, res, next) => {
 
-  passport.authenticate(function(error, user, info) {
+  passport.authenticate('local-signup',function (error, user, info) {
 
-    if(error) {
-      res.status(500).JSON({
+    if (error) {
+      return res.status(500).json({
         message: 'Oops something happened',
         error: error.message || 'internal server error'
       });
     }
-  })(req,res);
+
+    return res.json({
+      message: 'User authenticated'
+    })
+  })(req, res, next);
 })
 
 
@@ -26,7 +30,7 @@ router.post('/signup', passport.authenticate('local-signup', {
 }));
 
 
-router.post('/signin', function(req, res, next) {
+router.post('/signin', function (req, res, next) {
   res.send('respond with a resource');
 });
 
