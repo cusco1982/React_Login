@@ -1,4 +1,4 @@
-const Strategy = require('passpor-local').Strategy;
+const Strategy = require('passport-local').Strategy;
 
 
 const LoginStrategy = new Strategy( function (username, password, done) {

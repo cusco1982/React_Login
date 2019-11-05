@@ -1,8 +1,8 @@
 const passport = require ('passport');
 
 // import all the strategies
-const SignupStrategy = require("./GoogleStrategy");
-const SigninStrategy = require("./GoogleStrategy");
+const SignupStrategy = require("./SignupStrategy");
+const SigninStrategy = require("./SigninStrategy");
 // const GoogleStrategy = require("./GoogleStrategy");
 
 

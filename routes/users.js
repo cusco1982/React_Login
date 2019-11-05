@@ -3,10 +3,19 @@ const router = express.Router();
 const passport = require('../passport');
 
 
-// passport.authenticate('local-signup', () => {
+// Custom Passport Callback
+router.post('/signup', (req,res) => {
 
-// });
+  passport.authenticate(function(error, user, info) {
 
+    if(error) {
+      res.status(500).JSON({
+        message: 'Oops something happened',
+        error: error.message || 'internal server error'
+      });
+    }
+  })(req,res);
+})
 
 
 /* GET users listing. */
