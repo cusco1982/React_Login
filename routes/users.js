@@ -10,8 +10,7 @@ router.post('/signup', (req, res, next) => {
 
     if (error) {
       return res.status(500).json({
-        message: 'Oops something happened',
-        error: error.message || 'internal server error'
+        message: error || 'Oops something happened'
       });
     }
 

@@ -4,8 +4,7 @@ const bcrypt = require('bcryptjs');
 
 var salt = bcrypt.genSaltSync(10);
 
-const SignupStrategy = new Strategy({ passReqToCallback: true }, function (req, username, password, done) {
-    const email = req.body.email;
+const SignupStrategy = new Strategy({ passReqToCallback: true, usernameField:'email' }, function (req, email, password, done) {
 
     User.findOne({ email }).lean().exec((err, user) => {
         if (err) {
@@ -25,8 +24,8 @@ const SignupStrategy = new Strategy({ passReqToCallback: true }, function (req, 
             if (error) {
                 return done(error, null);
             }
-
-            return done(null, inserted);
+            delete inserted.password; //todo
+             return done(null, inserted);
         });
 
     });
