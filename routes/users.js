@@ -3,10 +3,10 @@ const router = express.Router();
 const passport = require('../passport');
 
 
-// Custom Passport Callback
 router.post('/signup', (req, res, next) => {
 
-  passport.authenticate('local-signup',function (error, user, info) {
+  // Custom Passport Callback
+  passport.authenticate('local-signup', function (error, user, info) {
 
     if (error) {
       return res.status(500).json({
@@ -15,19 +15,11 @@ router.post('/signup', (req, res, next) => {
       });
     }
 
-    return res.json({
-      message: 'User authenticated',
-    })
+
+    return res.json(user);
   })(req, res, next);
-})
+});
 
-
-/* GET users listing. */
-router.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: '/',
-  failureRedirect: '/home',
-  session: false
-}));
 
 
 router.post('/signin', function (req, res, next) {
