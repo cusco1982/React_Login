@@ -24,7 +24,7 @@ const SignupStrategy = new Strategy({ passReqToCallback: true, usernameField:'em
             if (error) {
                 return done(error, null);
             }
-            delete inserted.password; //todo
+            delete inserted.password; //todo 
              return done(null, inserted);
         });
 

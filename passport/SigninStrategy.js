@@ -20,7 +20,7 @@ const LoginStrategy = new Strategy({ usernameField: 'email' }, function (email, 
         if (!isPasswordValid) {
             return done('Email or Password not valid', null);
         }
-        return done(null, user);
+         return done(null, user);
 
 
     });
