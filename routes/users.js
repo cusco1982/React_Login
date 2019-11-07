@@ -17,12 +17,26 @@ router.post('/signup', (req, res, next) => {
 
     return res.json(user);
   })(req, res, next);
+
 });
 
 
 
+
 router.post('/signin', function (req, res, next) {
-  res.send('respond with a resource');
+  // Custom Passport Callback
+  passport.authenticate('local-signin', function (error, user, info) {
+
+    if (error) {
+      return res.status(500).json({
+        message: error || 'Oops something happened'
+      });
+    }
+
+
+    return res.json(user);
+  })(req, res, next);
+
 });
 
 
