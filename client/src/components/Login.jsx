@@ -3,7 +3,7 @@ import axios from "axios"
 
 
 
-export default class Signup extends Component {
+export default class Login extends Component {
     state = {
         email: "",
         password: ""
@@ -15,7 +15,7 @@ export default class Signup extends Component {
 
         const { email, password } = this.state;
         axios.post({
-            url: "/authentication/signup",
+            url: "/authentication/signin",
             method: 'POST',
             data: {
                 email,
@@ -34,10 +34,11 @@ export default class Signup extends Component {
     render() {
         return (
             <div>
+                <h2>Login Component</h2>
                 <form>
                     <input type="text" name="email" onChange={this.handleChange} />
                     <input type="password" name="password" onChange={this.handleChange} />
-                    <button>Signup</button>
+                    <button>Login</button>
                 </form>
             </div>
         )

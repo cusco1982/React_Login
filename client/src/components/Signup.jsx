@@ -34,6 +34,7 @@ export default class Signup extends Component {
     render() {
         return (
             <div>
+                <h2>Signup Component</h2>
                 <form>
                     <input type="text" name="email" onChange={this.handleChange} />
                     <input type="password" name="password" onChange={this.handleChange} />
