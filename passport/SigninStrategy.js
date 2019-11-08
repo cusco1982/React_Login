@@ -1,6 +1,7 @@
 const Strategy = require('passport-local').Strategy;
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
+const bodyParser = require('body-parser');
 
 var salt = bcrypt.genSaltSync(10);
 
@@ -8,6 +9,7 @@ var salt = bcrypt.genSaltSync(10);
 const LoginStrategy = new Strategy({ usernameField: 'email' }, function (email, password, done) {
     // what should be happening once user signup
     User.findOne({ email }).lean().exec((err, user) => {
+        console.log(email)
         if (err) {
             return done(err, null);
         }

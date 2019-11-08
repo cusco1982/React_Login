@@ -4,7 +4,7 @@ const passport = require('../passport');
 
 
 router.post('/signup', (req, res, next) => {
-
+// console.log("req:",req);
   // Custom Passport Callback
   passport.authenticate('local-signup', function (error, user, info) {
 
@@ -14,7 +14,7 @@ router.post('/signup', (req, res, next) => {
       });
     }
 
-
+console.log(user, "user")
     return res.json(user);
   })(req, res, next);
 
